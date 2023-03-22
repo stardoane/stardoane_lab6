@@ -1,0 +1,51 @@
+# menu options
+def menu():
+    print('Menu')
+    print(r'-------------')
+    print('1. Encode\n2. Decode\n3. Quit')
+
+
+# encodes password
+def encode(password):
+    encoded_pass = ''
+    for digit in str(password):
+        # adds three to each number in string
+        encoded_pass += str(int(digit) + 3)
+    encoded_pass = int(encoded_pass)
+    return encoded_pass
+
+
+# decodes password
+def decode(encoded_pass):
+    og_password = encode(password)
+    for digit in str(encoded_pass):
+        # subtracts 3 from each number in string
+        og_password += str(int(digit) - 3)
+    og_password = int(og_password)
+    return og_password
+
+
+# runs while loop
+code = True
+
+while code:
+    menu()
+    print()
+    option = int(input('Please enter an option:'))
+    # encodes and saves password
+    if option == 1:
+        password = input('Please enter your password to encode:')
+        encoded_pass = encode(password)
+        print('Your password has been encoded and stored!')
+        print()
+    # decodes password and displays old and new password
+    if option == 2:
+        encoded_pass = ''
+        new_pass = decode(encoded_pass)
+        print('The encoded password is', new_pass, ', and the original password is', password, end='.')
+        print()
+        print()
+    # ends while loop
+    if option == 3:
+        code = False
+
